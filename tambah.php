@@ -1,5 +1,8 @@
+
 <?php
 include "koneksi.php";
+
+$kategori = mysqli_query($koneksi, "SELECT * FROM kategori");
 
 if (isset($_POST['simpan'])) {
 
@@ -8,10 +11,11 @@ if (isset($_POST['simpan'])) {
     $stok = $_POST['stok'];
     $sinopsis = $_POST['sinopsis'];
     $status = $_POST['status_pinjam'];
-    $kategori = $_POST['kategori'];
+    $kategori_buku = $_POST['kategori'];
 
-    $sql = "INSERT INTO buku (kode_buku, judul_buku, stok, sinopsis, status_pinjam, kategori)
-    VALUES ('$kode', '$judul', '$stok', '$sinopsis', '$status', '$kategori')";
+    $sql = "INSERT INTO buku
+    (kode_buku, judul_buku, stok, sinopsis, status_pinjam, kategori)
+    VALUES ('$kode', '$judul', '$stok', '$sinopsis', '$status', '$kategori_buku')";
 
     $simpan = mysqli_query($koneksi, $sql);
 
@@ -19,7 +23,7 @@ if (isset($_POST['simpan'])) {
         header("Location: index.php?pesan=Data berhasil ditambahkan");
         exit;
     } else {
-        echo "Gagal menyimpan data: " . mysqli_error($koneksi);
+        echo "Gagal menyimpan: " . mysqli_error($koneksi);
     }
 }
 ?>
@@ -33,33 +37,39 @@ if (isset($_POST['simpan'])) {
 
 <h2>Tambah Data Buku</h2>
 
-<form method="POST" action="">
+<form method="POST">
 
-    <label>Kode Buku:</label><br>
-    <input type="text" name="kode_buku"><br><br>
+    Kode Buku:<br>
+    <input type="text" name="kode_buku" required>
+    <br><br>
 
-    <label>Judul Buku:</label><br>
-    <input type="text" name="judul_buku"><br><br>
+    Judul Buku:<br>
+    <input type="text" name="judul_buku" required>
+    <br><br>
 
-    <label>Stok:</label><br>
-    <input type="number" name="stok"><br><br>
+    Stok:<br>
+    <input type="number" name="stok" required>
+    <br><br>
 
-    <label>Sinopsis:</label><br>
-    <textarea name="sinopsis"></textarea><br><br>
+    Sinopsis:<br>
+    <textarea name="sinopsis"></textarea>
+    <br><br>
 
-    <label>Status Pinjam:</label><br>
-    <input type="radio" name="status_pinjam" value="Tersedia"> Tersedia
+    Status Pinjam:<br>
+    <input type="radio" name="status_pinjam" value="Tersedia" required> Tersedia
     <input type="radio" name="status_pinjam" value="Dipinjam"> Dipinjam
     <br><br>
 
-    <label>Kategori:</label><br>
+    Kategori:<br>
+    <select name="kategori" required>
+        <option value="">-- Pilih Kategori --</option>
 
-    <select name="kategori">
-        <option value="Pelajaran">Pelajaran</option>
-        <option value="Novel">Novel</option>
-        <option value="Komik">Komik</option>
-        <option value="Sains">Sains</option>
-        <option value="Sejarah">Sejarah</option>
+        <?php while ($data = mysqli_fetch_assoc($kategori)) { ?>
+            <option value="<?php echo htmlspecialchars($data['nama_kategori']); ?>">
+                <?php echo htmlspecialchars($data['nama_kategori']); ?>
+            </option>
+        <?php } ?>
+
     </select>
 
     <br><br>

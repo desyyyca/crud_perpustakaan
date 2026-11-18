@@ -1,8 +1,8 @@
-CREATE DATABASE perpustakaan;
+CREATE DATABASE IF NOT EXISTS perpustakaan;
 
 USE perpustakaan;
 
-CREATE TABLE buku (
+CREATE TABLE IF NOT EXISTS buku (
     id INT AUTO_INCREMENT PRIMARY KEY,
     kode_buku VARCHAR(20),
     judul_buku VARCHAR(100),
