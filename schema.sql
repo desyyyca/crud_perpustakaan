@@ -12,6 +12,12 @@ CREATE TABLE IF NOT EXISTS buku (
     kategori VARCHAR(30)
 );
 
+CREATE TABLE IF NOT EXISTS kategori (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nama_kategori VARCHAR(100),
+    gambar VARCHAR(255)
+);
+
 INSERT INTO buku (kode_buku, judul_buku, stok, sinopsis, status_pinjam, kategori) VALUES
 ('02', 'Dia seorang vampir', 1, 'Solikah seorang vampir yang sedang pkl di sentana', 'Tersedia', 'Sejarah'),
 ('03', 'Laskar pelangi', 10, 'Mengisahkan perjuangan 10 anak dari keluarga kurang mampu di Pulau Belitung untuk tetap bisa bersekolah di SD Muhammadiyah yang nyaris ditutup.', 'Tersedia', 'Novel'),
