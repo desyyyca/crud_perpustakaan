@@ -1,0 +1,139 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f3ed;
+    color: #444;
+    padding: 30px;
+}
+
+h2 {
+    color: #45594a;
+    margin-bottom: 25px;
+    font-size: 26px;
+}
+
+a {
+    text-decoration: none;
+    color: #718b72;
+    margin-right: 5px;
+}
+
+a:hover {
+    color: #405b45;
+}
+
+button {
+    background-color: #718b72;
+    color: white;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 7px;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(69, 89, 74, 0.2);
+}
+
+button:hover {
+    background-color: #526d56;
+    transform: translateY(-2px);
+}
+
+input, textarea, select {
+    padding: 11px;
+    border: 1px solid #d8d8cc;
+    border-radius: 7px;
+    width: 250px;
+    max-width: 100%;
+    outline: none;
+    background-color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #718b72;
+    box-shadow: 0 0 6px rgba(113, 139, 114, 0.3);
+}
+
+input[type="radio"],
+input[type="file"] {
+    width: auto;
+    box-shadow: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin-top: 15px;
+    background: transparent;
+}
+
+th {
+    background-color: #45594a;
+    color: white;
+    padding: 16px 12px;
+}
+
+td {
+    background-color: white;
+    padding: 16px 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+}
+
+th:first-child {
+    border-radius: 9px 0 0 9px;
+}
+
+th:last-child {
+    border-radius: 0 9px 9px 0;
+}
+
+td:first-child {
+    border-radius: 9px 0 0 9px;
+}
+
+td:last-child {
+    border-radius: 0 9px 9px 0;
+}
+
+tr:hover td {
+    background-color: #f0f4ed;
+}
+
+img {
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+form {
+    background-color: white;
+    padding: 22px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+}
+
+form a {
+    margin-left: 8px;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 9px 6px;
+    }
+}

@@ -36,6 +36,7 @@ if (isset($_POST['simpan'])) {
 <html>
 <head>
     <title>Tambah Kategori</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 

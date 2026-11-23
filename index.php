@@ -7,13 +7,19 @@ $cari = isset($_GET['cari']) ? mysqli_real_escape_string($koneksi, $_GET['cari']
 $query = mysqli_query($koneksi, "SELECT buku.*, kategori.gambar
 FROM buku
 LEFT JOIN kategori ON buku.kategori = kategori.nama_kategori
-WHERE judul_buku LIKE '%$cari%'");
+WHERE buku.kode_buku LIKE '%$cari%'
+OR buku.judul_buku LIKE '%$cari%'
+OR CAST(buku.stok AS CHAR) LIKE '%$cari%'
+OR buku.sinopsis LIKE '%$cari%'
+OR buku.status_pinjam LIKE '%$cari%'
+OR buku.kategori LIKE '%$cari%'");
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>Data Buku</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -26,7 +32,7 @@ WHERE judul_buku LIKE '%$cari%'");
 <br><br>
 
 <form method="GET">
-    <input type="text" name="cari" placeholder="Cari judul buku..."
+    <input type="text" name="cari" placeholder="Cari buku, stok, kategori..."
     value="<?php echo htmlspecialchars($cari); ?>">
 
     <button type="submit">Cari</button>
@@ -35,8 +41,7 @@ WHERE judul_buku LIKE '%$cari%'");
 
 <br>
 
-<table border="1" cellpadding="5" cellspacing="0">
-
+<table>
 <tr>
     <th>No</th>
     <th>Kode Buku</th>
@@ -56,22 +61,25 @@ while ($data = mysqli_fetch_assoc($query)) {
 
 <tr>
     <td><?php echo $no++; ?></td>
-    <td><?php echo $data['kode_buku']; ?></td>
-    <td><?php echo $data['judul_buku']; ?></td>
+    <td><?php echo htmlspecialchars($data['kode_buku']); ?></td>
+    <td><?php echo htmlspecialchars($data['judul_buku']); ?></td>
     <td><?php echo $data['stok']; ?></td>
-    <td><?php echo $data['sinopsis']; ?></td>
-    <td><?php echo $data['status_pinjam']; ?></td>
-    <td><?php echo $data['kategori']; ?></td>
+    <td><?php echo htmlspecialchars($data['sinopsis']); ?></td>
+    <td><?php echo htmlspecialchars($data['status_pinjam']); ?></td>
+    <td><?php echo htmlspecialchars($data['kategori']); ?></td>
+
     <td>
         <?php if ($data['gambar'] != '') { ?>
-            <img src="gambar/<?php echo $data['gambar']; ?>" width="80">
+            <img src="gambar/<?php echo htmlspecialchars($data['gambar']); ?>" width="80">
         <?php } else { ?>
             Tidak ada gambar
         <?php } ?>
     </td>
+
     <td>
         <a href="edit.php?id=<?php echo $data['id']; ?>">Edit</a> |
-        <a href="hapus.php?id=<?php echo $data['id']; ?>" onclick="return confirm('Yakin hapus data ini?')">Hapus</a>
+        <a href="hapus.php?id=<?php echo $data['id']; ?>"
+        onclick="return confirm('Yakin hapus data ini?')">Hapus</a>
     </td>
 </tr>
 

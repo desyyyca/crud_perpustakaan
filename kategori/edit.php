@@ -54,6 +54,7 @@ if (isset($_POST['update'])) {
 <html>
 <head>
     <title>Edit Kategori</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 

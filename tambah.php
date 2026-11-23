@@ -32,6 +32,7 @@ if (isset($_POST['simpan'])) {
 <html>
 <head>
     <title>Tambah Buku</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
