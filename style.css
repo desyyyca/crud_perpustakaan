@@ -28,6 +28,45 @@ a:hover {
     color: #405b45;
 }
 
+.menu-atas {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.menu-atas a {
+    display: inline-block;
+    padding: 11px 18px;
+    background-color: #e4e9df;
+    color: #45594a;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+    transition: 0.3s;
+}
+
+.menu-atas a:hover {
+    background-color: #d3ddcf;
+    color: #344a39;
+}
+
+.menu-atas a.btn-logout {
+    background-color: #718b72;
+    color: white;
+    padding: 11px 22px;
+    border-radius: 7px;
+    box-shadow: 0 3px 8px rgba(69, 89, 74, 0.2);
+}
+
+.menu-atas a.btn-logout:hover {
+    background-color: #45594a;
+    color: white;
+    transform: translateY(-2px);
+}
+
 button {
     background-color: #718b72;
     color: white;
@@ -135,5 +174,108 @@ form a {
 
     th, td {
         padding: 9px 6px;
+    }
+}
+
+body.halaman-login {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e9eee7;
+}
+
+.halaman-login .login {
+    width: 370px;
+    padding: 35px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(69, 89, 74, 0.18);
+    border: 1px solid #e0e8dc;
+}
+
+.halaman-login h2 {
+    text-align: center;
+    color: #45594a;
+    margin-bottom: 8px;
+}
+
+.halaman-login .subtitle {
+    text-align: center;
+    color: #899b85;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.halaman-login form {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+.halaman-login label {
+    display: block;
+    color: #526d56;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.halaman-login input {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 20px;
+    border: 1px solid #d8e0d3;
+    border-radius: 9px;
+    outline: none;
+    background: #fafbf8;
+    font-size: 14px;
+}
+
+.halaman-login input:focus {
+    border-color: #718b72;
+    box-shadow: 0 0 7px rgba(113, 139, 114, 0.2);
+}
+
+.halaman-login button {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 9px;
+    background: #718b72;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.halaman-login button:hover {
+    background: #45594a;
+}
+
+.halaman-login .error {
+    color: #c0392b;
+    background: #fcebea;
+    padding: 10px;
+    border-radius: 7px;
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.halaman-login .footer {
+    text-align: center;
+    font-size: 12px;
+    color: #899b85;
+    margin-top: 25px;
+}
+
+@media (max-width: 450px) {
+    .halaman-login .login {
+        width: 90%;
+        padding: 25px;
     }
 }

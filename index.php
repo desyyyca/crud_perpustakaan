@@ -1,5 +1,5 @@
-
 <?php
+include "auth.php";
 include "koneksi.php";
 
 $cari = isset($_GET['cari']) ? mysqli_real_escape_string($koneksi, $_GET['cari']) : '';
@@ -19,27 +19,29 @@ OR buku.kategori LIKE '%$cari%'");
 <html>
 <head>
     <title>Data Buku</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
 
 <h2>Daftar Buku Perpustakaan</h2>
 
-<a href="tambah.php">+ Tambah Buku</a>
-<br><br>
-
-<a href="kategori/index.php">Kelola Kategori</a>
-<br><br>
+<div class="menu-atas">
+    <a href="tambah.php">+ Tambah Buku</a>
+    <a href="kategori/index.php">Kelola Kategori</a>
+    <a href="logout.php" class="btn-logout"
+    onclick="return confirm('Yakin ingin logout?')">
+        Logout
+    </a>
+</div>
 
 <form method="GET">
-    <input type="text" name="cari" placeholder="Cari buku, stok, kategori..."
+    <input type="text" name="cari"
+    placeholder="Cari buku, stok, kategori..."
     value="<?php echo htmlspecialchars($cari); ?>">
 
     <button type="submit">Cari</button>
     <a href="index.php">Reset</a>
 </form>
-
-<br>
 
 <table>
 <tr>
@@ -79,7 +81,9 @@ while ($data = mysqli_fetch_assoc($query)) {
     <td>
         <a href="edit.php?id=<?php echo $data['id']; ?>">Edit</a> |
         <a href="hapus.php?id=<?php echo $data['id']; ?>"
-        onclick="return confirm('Yakin hapus data ini?')">Hapus</a>
+        onclick="return confirm('Yakin hapus data ini?')">
+            Hapus
+        </a>
     </td>
 </tr>
 
